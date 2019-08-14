@@ -76,7 +76,7 @@ public abstract class BaseCreateThreadActivity extends BaseActivity implements C
      * @param view
      */
     public void clickStartThread(View view) {
-        startCount();
+        startThread();
     }
 
     /**
@@ -84,7 +84,7 @@ public abstract class BaseCreateThreadActivity extends BaseActivity implements C
      * @param view
      */
     public void clickStopThread(View view) {
-        stopCount();
+        stopThread();
     }
 
     /**
