@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="Thread 创建线程"
+        android:textAllCaps="false"
+        android:onClick="testThreadCreate"/>
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="Runnable 创建线程"
+        android:textAllCaps="false"
+        android:onClick="testRunnableCreate"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="runOnUiThread 切换到 UI 线程"
+        android:textAllCaps="false"
+        android:onClick="testRunOnUiThread"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="View.post(Runnable) 切换到 UI 线程"
+        android:textAllCaps="false"
+        android:onClick="testViewPost"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="postDelayed 切换到 UI 线程"
+        android:textAllCaps="false"
+        android:onClick="testPostDelayed"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="AsyncTask 使用"
+        android:textAllCaps="false"
+        android:onClick="testAsyncTask"/>
+</LinearLayout>

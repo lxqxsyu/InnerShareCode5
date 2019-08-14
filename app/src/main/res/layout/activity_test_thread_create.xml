@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".thread.TestThreadCreateActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="启动线程"
+        android:onClick="clickStartThread"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="停止线程"
+        android:onClick="clickStopThread"/>
+
+    <TextView
+        android:id="@+id/tv_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dip"
+        tools:text="显示的内容"/>
+</LinearLayout>

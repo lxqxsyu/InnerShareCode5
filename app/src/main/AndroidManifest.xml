@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dlc.innershare">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".App"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".thread.TestThreadCreateActivity"
+            android:screenOrientation="portrait"
+            android:label="Thread 方式创建线程"/>
+        <activity android:name=".thread.TestRunnableCreateActivity"
+            android:screenOrientation="portrait"
+            android:label="Runnable 方式创建线程"/>
+        <activity android:name=".uithread.TestRunOnUiThreadActivity"
+            android:screenOrientation="portrait"
+            android:label="runOnUiThread 方法测试"/>
+        <activity android:name=".uithread.TestViewPostActivity"
+            android:screenOrientation="portrait"
+            android:label="View.post 方法测试"/>
+        <activity android:name=".uithread.TestPostDelayedActivity"
+            android:screenOrientation="portrait"
+            android:label="View.postDelayed 方法测试"/>
+        <activity android:name=".TestAsyncTaskActivity"
+            android:screenOrientation="portrait"
+            android:label="AsyncTask 测试"/>
+    </application>
+
+</manifest>
