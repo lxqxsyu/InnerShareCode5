@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dlc.innershare">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,6 +37,9 @@
         <activity android:name=".TestAsyncTaskActivity"
             android:screenOrientation="portrait"
             android:label="AsyncTask 测试"/>
+        <activity android:name=".listtest.TestListViewActivity"
+            android:screenOrientation="portrait"
+            android:label="测试列表适配器"/>
     </application>
 
 </manifest>

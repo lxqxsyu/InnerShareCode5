@@ -49,4 +49,10 @@
         android:text="AsyncTask 使用"
         android:textAllCaps="false"
         android:onClick="testAsyncTask"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="测试列表适配器的使用"
+        android:onClick="testListAdapter"/>
 </LinearLayout>
