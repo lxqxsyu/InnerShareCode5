@@ -56,10 +56,18 @@ public class TestListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View rootview = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo_test, null, true);
-        ImageView imageView = rootview.findViewById(R.id.item_imageview);
-        TextView textView = rootview.findViewById(R.id.item_textview);
-        textView.setText(getItem(position).time);
+
+        ViewHolder holder;
+        if(convertView == null){
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo_test, null, true);
+            holder = new ViewHolder();
+            holder.imageView = convertView.findViewById(R.id.item_imageview);
+            holder.textView = convertView.findViewById(R.id.item_textview);
+            convertView.setTag(holder);
+        }else{
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.textView.setText(getItem(position).time);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.ic_launcher_background)
                 .showImageForEmptyUri(R.drawable.ic_launcher_background) // resource or drawable
@@ -70,8 +78,12 @@ public class TestListAdapter extends BaseAdapter {
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT) // default
                 .bitmapConfig(Bitmap.Config.ARGB_8888) // default
                 .build();
-        ImageLoader.getInstance().displayImage(getItem(position).img, imageView,options);
+        ImageLoader.getInstance().displayImage(getItem(position).img, holder.imageView,options);
+        return convertView;
+    }
 
-        return rootview;
+    static class ViewHolder{
+        ImageView imageView;
+        TextView textView;
     }
 }

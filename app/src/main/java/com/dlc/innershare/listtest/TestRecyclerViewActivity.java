@@ -1,23 +1,20 @@
 package com.dlc.innershare.listtest;
 
-import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Process;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Display;
-import android.widget.GridView;
-import android.widget.ListView;
 
 import com.dlc.innershare.R;
-import com.dlc.innershare.adapter.TestListAdapter;
+import com.dlc.innershare.adapter.TestRecyclerViewAdapter;
 import com.dlc.innershare.base.BaseActivity;
 import com.dlc.innershare.entry.ReciveData;
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,43 +29,54 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class TestListViewActivity extends BaseActivity {
+public class TestRecyclerViewActivity extends BaseActivity {
 
-    private GridView mListView;
-    private TestListAdapter mAdapter;
+    private RecyclerView mRecyclerView;
+    private TestRecyclerViewAdapter mAdapter;
     private List<ReciveData.PhotoData> mPhotoDatas = new ArrayList<>();
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_listview);
+        setContentView(R.layout.activity_test_recyclerview);
+        mRecyclerView = findViewById(R.id.my_recycler_view);
 
+        new MyAsyncTask().execute("https://api.apiopen.top/getImages?page=0&count=40");
 
-        mListView = findViewById(R.id.test_listview);
-        mAdapter = new TestListAdapter(mPhotoDatas, getScreenWidth());
-        mListView.setAdapter(mAdapter);
-
-        initData();
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new TestRecyclerViewAdapter(this, mPhotoDatas);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
-    private void initData(){
-        new Thread(){
-            @Override
-            public void run() {
-                android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
-                requestData();
-            }
-        }.start();
+    class MyAsyncTask extends AsyncTask<String, Void, Void>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mPhotoDatas.clear();
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            requestData(strings[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void integer) {
+            super.onPostExecute(integer);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
 
-    private void requestData(){
+    private void requestData(String urlstr){
         HttpURLConnection connection = null;
         InputStream stream = null;
         try {
-            URL url = new URL("https://api.apiopen.top/getImages?page=0&count=40");
+            URL url = new URL(urlstr);
             connection = (HttpURLConnection) url.openConnection();
             connection.setConnectTimeout(3000); //连接超时
             connection.setReadTimeout(3000); //读取超时
@@ -88,14 +96,6 @@ public class TestListViewActivity extends BaseActivity {
             Log.d("TEST", "result = " + result);
             ReciveData reciveData = new Gson().fromJson(result, ReciveData.class);
             mPhotoDatas.addAll(reciveData.result);
-
-            mListView.post(new Runnable() {
-                @Override
-                public void run() {
-                    mAdapter.notifyDataSetChanged();
-                }
-            });
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -55,4 +55,10 @@
         android:layout_height="48dip"
         android:text="测试列表适配器的使用"
         android:onClick="testListAdapter"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:text="测试RecyclerView的使用"
+        android:onClick="testRecyclerView"/>
 </LinearLayout>

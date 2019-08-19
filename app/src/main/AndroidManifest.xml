@@ -40,6 +40,9 @@
         <activity android:name=".listtest.TestListViewActivity"
             android:screenOrientation="portrait"
             android:label="测试列表适配器"/>
+        <activity android:name=".listtest.TestRecyclerViewActivity"
+            android:screenOrientation="portrait"
+            android:label="测试RecyclerView"/>
     </application>
 
 </manifest>

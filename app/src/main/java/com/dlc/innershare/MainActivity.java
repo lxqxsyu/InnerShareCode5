@@ -3,8 +3,10 @@ package com.dlc.innershare;
 import android.os.Bundle;
 import android.view.View;
 
+import com.dlc.innershare.adapter.TestRecyclerViewAdapter;
 import com.dlc.innershare.base.BaseActivity;
 import com.dlc.innershare.listtest.TestListViewActivity;
+import com.dlc.innershare.listtest.TestRecyclerViewActivity;
 import com.dlc.innershare.thread.TestRunnableCreateActivity;
 import com.dlc.innershare.thread.TestThreadCreateActivity;
 import com.dlc.innershare.uithread.TestPostDelayedActivity;
@@ -45,5 +47,9 @@ public class MainActivity extends BaseActivity {
 
     public void testListAdapter(View view) {
         turnTo(TestListViewActivity.class);
+    }
+
+    public void testRecyclerView(View view) {
+        turnTo(TestRecyclerViewActivity.class);
     }
 }
