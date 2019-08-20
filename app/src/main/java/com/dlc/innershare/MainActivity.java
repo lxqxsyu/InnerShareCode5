@@ -6,8 +6,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.dlc.innershare.adapter.MainMenuAdapter;
+import com.dlc.innershare.adapter.TestRecyclerViewAdapter;
 import com.dlc.innershare.base.BaseActivity;
 import com.dlc.innershare.entry.MainMenu;
+import com.dlc.innershare.listtest.TestListViewActivity;
+import com.dlc.innershare.listtest.TestRecyclerViewActivity;
 import com.dlc.innershare.thread.TestRunnableCreateActivity;
 import com.dlc.innershare.thread.TestThreadCreateActivity;
 import com.dlc.innershare.uithread.TestPostDelayedActivity;
@@ -46,5 +49,7 @@ public class MainActivity extends BaseActivity {
         mButtonsData.add(new MainMenu("View.post(Runnable) 切换到 UI 线程", TestViewPostActivity.class));
         mButtonsData.add(new MainMenu("postDelayed 切换到 UI 线程", TestPostDelayedActivity.class));
         mButtonsData.add(new MainMenu("AsyncTask 使用", TestAsyncTaskActivity.class));
+        mButtonsData.add(new MainMenu("测试列表适配器的使用", TestListViewActivity.class));
+        mButtonsData.add(new MainMenu("测试RecyclerView的使用", TestRecyclerViewActivity.class));
     }
 }
